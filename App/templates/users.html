@@ -1,3 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask MVC App</title>
+    <!-- Add the embedded font links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Welcome to crimson -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&display=swap" rel="stylesheet">
+
+  <!-- where everydrop-->
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Russo+One&display=swap" rel="stylesheet">
+
+  <style>
+      /* Override Materialize CSS for dropdown options */
+      .dropdown-content li>span {
+          color: red !important;
+      }
+  </style>
+  
+</head>
+<body>
+
 {% extends "layout.html" %}
 {% block title %}App Users{% endblock %}
 {% block page %}App Users{% endblock %}
@@ -5,51 +31,101 @@
 {{ super() }}
 
 {% block content %}
-    <div class="row">
-        <p>
-            This is table is renderd on the Server. Flask gets the data from the database and uses jinja templates to dyanmically render this page when a request is sent to <a href="/users">/users</a>.
-        </p>
-    </div>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+        <div class="card" style="background-color: #F9F9F9;">
+            <div class="card-content black-text">
 
-    <div class="row">
-      <form class="col s12" method="POST" action="/users">
-        
-        <div class="row">
-          <div class="input-field col s6">
-            <input placeholder="Username" name="username" type="text" class="validate">
-            <label for="username">Username</label>
-          </div>
-          <div class="input-field col s6">
-            <input placeholder="password" name="password" type="password" class="validate">
-            <label for="password">Password</label>
-          </div>
+              <!-- Header -->
+               <h5 class="card-title metal-mania-regular create-account-heading">Create An Account</h5>
+
+                <p class="russo-one-regular p2" style="text-align: center; color: #f70808;">STRENGTH AND PASSION IN EVERY WORKOUT</p>
+
+              <!--Personal Info -->
+                <div class="row">
+                    <form class="col s12" method="POST" action="/signup">
+
+                      <p style="margin-top: 10px; margin-bottom: 10px; text-decoration: underline; font-family: 'Noto Sans', sans-serif; font-weight: bold;">Personal Information</p>
+
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="e.g., liddlejohnny72" name="username" type="text" class="validate" required>
+                                <label for="username" class="russo-one-regular"  style="color: black;" >Username</label>
+                            </div>
+
+                            <div class="input-field col s6"  style="color: black;" >
+                                <select name="sex" required>
+                                    <option value="" disabled selected>Choose your sex</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <label class="russo-one-regular"  style="color: black;" >Sex</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="e.g., Fit4Life!23" name="password" type="password" class="validate" required>
+                                <label for="password" class="russo-one-regular"  style="color: black;" >Password</label>
+                            </div>
+
+                           <div class="input-field col s6">
+                                <input placeholder="e.g., John" name="first_name" type="text" class="validate" required>
+                                <label for="first_name" class="russo-one-regular"  style="color: black;" >First Name</label>
+                           </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder=" e.g., john.smith@example.com" name="email" type="email" class="validate" required>
+                                <label for="email" class="russo-one-regular"  style="color: black;" >Email</label>
+                            </div>
+
+                           <div class="input-field col s6">
+                                <input placeholder="e.g., Smith" name="last_name" type="text" class="validate" required>
+                                <label for="last_name" class="russo-one-regular"  style="color: black;" >Last Name</label>
+                           </div> 
+                        </div>
+
+                       <!-- PHYSICAL ATTRIBUTES -->
+                      <p style="margin-block: 10px; text-decoration: underline; font-family: 'Noto Sans', sans-serif; font-weight: bold;">Physical Attributes & Fitness Background</p>
+                      
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder=" e.g., 168 (cm only)" name="height" type="text" class="validate" required>
+                                <label for="height" class="russo-one-regular"  style="color: black;" >Height</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder=" e.g., 150 (lbs only)" name="weight" type="text" class="validate" required>
+                                <label for="weight" class="russo-one-regular"  style="color: black;" >Weight</label>
+                            </div>
+                        </div>
+
+                      <div class="row">
+                          <div class="input-field col s6">
+                              <select name="gym_experience" required>
+                                  <option value="" disabled selected style="color: black;" >Choose your gym experience</option>
+                                  <option value="Newbie">Newbie</option>
+                                  <option value="Seasoned">Seasoned</option>
+                                  <option value="Trainer">Trainer</option>
+                              </select>
+                              <label class="russo-one-regular" style="color: black;">Gym Experience</label>
+                          </div>
+                      </div>
+
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light right red metal-mania-regular btn-large" style="border-radius:5px" type="submit" name="action" >Sign Up</button>
+                            </div>
+                        </div> 
+
+                    </form>
+                </div>
+            </div>
         </div>
-      
-        <div class="row">
-          <div class="input-field col s12">
-            <button class="btn waves-effect waves-light right purple" type="submit" name="action">Submit</button>
-          </div>
-        </div> 
-
-      </form>
     </div>
-
-    <div class="row">
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th><th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for user in users %}
-            <tr>
-                <td>{{user.id}}</td>
-                <td>{{user.username}}</td>
-            </tr>
-          {% endfor %}
-        <tbody>
-      </table>
-    </div>
+</div>
 
 {% endblock %}
