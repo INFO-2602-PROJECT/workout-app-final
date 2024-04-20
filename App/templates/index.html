@@ -1,13 +1,99 @@
-{% extends "layout.html" %}
-{% block title %}Flask MVC App{% endblock %}
-{% block page %}Flask MVC App{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask MVC App</title>
+    <!-- Add the embedded font links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-{{ super() }}
+  <!-- Welcome to crimson -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&display=swap" rel="stylesheet">
 
-{% block content %}
-    <h1>Flask MVC</h1>
-    {% if is_authenticated %}
-        <p> Welcome {{current_user.username}} </p>
-    {% endif %}
-    <p>This is a boileplate flask application which follows the MVC pattern for structuring the project.</p>
+  <!-- where everydrop-->
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Russo+One&display=swap" rel="stylesheet">
+
+  
+  
+</head>
+<body>
+    {% extends "layout.html" %}
+    {% block title %}Flask MVC App{% endblock %}
+    {% block page %}Flask MVC App{% endblock %}
+
+    {% block content %}
+
+    <div class="center-content">
+        <!-- Apply the .russo-one-regular class to the heading -->
+        <span> <h1 class="metal-mania-regular">Welcome to Crimson Core</h1> </span>
+        <p class="russo-one-regular">where every drop of sweat fuels your journey to strength and vitality</p>
+    </div>
+
+   <div class="search-bar">
+     <!-- search bar -->
+     <form action="/search" method="GET">
+         <input type="text" name="keyword" placeholder="Search...">
+         <button class= "metal-mania-regular" type="submit">Search</button>
+     </form>
+     <div class="clearfix"></div>
+   </div>
+
+   <div class="main-container">
+     <div class="grid-container">
+         <!-- YouTube videos go here -->
+         {% for video in videos %}
+         <div class="grid-item">
+             <div class="card">
+                 <div>
+                     <img src="{{ video.image_url }}">
+                 </div>
+                 <div class="card-body">
+                     <h6 class="card-title">{{ video.title }}</h6>
+
+                     <i class="small material-icons toggle-description">info_outline</i>
+                     <p class="card-text full-description" id="full-description_{{ loop.index }}">{{ video.description }}</p>
+                 </div>
+               
+                 <div class="card-buttons">
+                     <a href="{{ video.video_url }}" class="btn btn-primary"> <i class="material-icons">remove_red_eye</i> Watch Video</a>
+                     {% if is_authenticated %}
+                     <form action="/add" method="POST">
+                         <input type="hidden" name="title" value="{{ video.title }}">
+                         <input type="hidden" name="image" value="{{ video.image_url }}">
+                         <input type="hidden" name="description" value="{{ video.description }}">
+                         <input type="hidden" name="url" value="{{ video.video_url }}">
+                         <button type="submit" class="btn btn-primary">
+                             <i class="material-icons">add</i> Add to Playlist
+                         </button>
+                     </form>
+                     {% endif %}
+                 </div>
+               
+            <div class="card-icons">
+                        <div class="eye">
+                          <a class="btn" href="{{ video.video_url }}"> <i class="material-icons">remove_red_eye</i></a>
+                        </div>
+                        {% if is_authenticated %}
+                        <form action="/add" method="POST">
+                            <input type="hidden" name="title" value="{{ video.title }}">
+                            <input type="hidden" name="image" value="{{ video.image_url }}">
+                            <input type="hidden" name="description" value="{{ video.description }}">
+                            <input type="hidden" name="url" value="{{ video.video_url }}">
+                            <div class="addition">
+                              <button  type="submit" class="btn">
+                                  <i class="material-icons">add</i>
+                              </button>
+                            </div>
+                        </form>
+                        {% endif %}
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
+   </body>
+   </html>
+
