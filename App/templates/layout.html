@@ -1,70 +1,155 @@
 <!doctype html>
 <html>
   <head>
-  
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{% block title %}{% endblock %}</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        .navbar-form label {
+            color: black;
+        }
+    </style>
   </head>
   <body>
-    
-      <nav class="purple">
-          <div class="nav-wrapper">
-              <a href="#!" class="brand-logo center">{% block page %}{% endblock %}</a>
-              <ul id="nav-mobile" class="left">
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/users">Users Jinja</a></li>
-                  {% if is_authenticated %}
-                    <li><a href="/identify">Identify</a></li>
-                  {% endif %}
-                  <li><a href="/static/users">Users JS</a></li>
-              </ul>
-              {% if is_authenticated %}
-              <ul id="nav-mobile" class="right">
-                <li><a href="/logout">Logout</a></li>
-              </ul>
-              {% else %}
-              <form class="right navbar-form" method="POST" action="/login" style="display: flex; flex-wrap: nowrap; align-items: center; margin-right: 10px;">
-                  <div class="input-field" style="margin-right: 10px;">
-                      <input placeholder="username" value="bob" name="username" type="text" class="validate" required>
-                      <label for="username">username</label>
-                  </div>
-                  <div class="input-field" style="margin-right: 10px;">
-                      <input placeholder="password"value="bobpass" name="password" type="password" class="validate" required>
-                      <label for="password">Password</label>
-                  </div>
-                  <button type="submit" class="btn waves-effect waves-light">Login</button>
-              </form>
-              {% endif %}
-              
-          </div>
-      </nav>
-      <style>
-          .navbar-form label {
-              color: white !important;
-          }
-      </style>
+    <div class="navbar-fixed"> 
+      <nav class="white">
+        <div class="nav-wrapper" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
 
-    <div class="container" id="content">{% block content %}{% endblock %}</div>
+          <div class="logo-center">
+            <div class="home-for-center">
+          <ul style="flex-grow: 2; justify-content: flex-start;">
+            <li><a href="/" class="russo-one-regular">Home</a></li>
+          </ul>
+            </div>
+
+          <div class="logo-for-center">
+          <a class="brand-logo center" href="/"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/92f6f5d7-01b0-4b19-9724-cae4c7bab289/dh93evx-6b25ba52-d9a7-4f37-a7ea-f5295ed23889.png/v1/fit/w_828,h_474/crimsoncorenew_by_ethella106_dh93evx-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzMyIiwicGF0aCI6IlwvZlwvOTJmNmY1ZDctMDFiMC00YjE5LTk3MjQtY2FlNGM3YmFiMjg5XC9kaDkzZXZ4LTZiMjViYTUyLWQ5YTctNGYzNy1hN2VhLWY1Mjk1ZWQyMzg4OS5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.tBWX8O1LEeuWFKNSC3aeZXJhg4ZVAxtGOkQEO2uTKNA" alt="Crimson Core Logo"></a>
+          </div>
+          </div>
+          <div class="logo-left">
+          <a class="brand-logo left" href="/"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/92f6f5d7-01b0-4b19-9724-cae4c7bab289/dh93evx-6b25ba52-d9a7-4f37-a7ea-f5295ed23889.png/v1/fit/w_828,h_474/crimsoncorenew_by_ethella106_dh93evx-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzMyIiwicGF0aCI6IlwvZlwvOTJmNmY1ZDctMDFiMC00YjE5LTk3MjQtY2FlNGM3YmFiMjg5XC9kaDkzZXZ4LTZiMjViYTUyLWQ5YTctNGYzNy1hN2VhLWY1Mjk1ZWQyMzg4OS5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.tBWX8O1LEeuWFKNSC3aeZXJhg4ZVAxtGOkQEO2uTKNA" alt="Crimson Core Logo"></a>
+          </div>
+          
+          <div class="right" style="flex-grow: 1; display: flex; justify-content: flex-end; ">
+            {% if is_authenticated %}
+            <ul id="nav-mobile" class="right">
+                <li><a href="/playlist" class="russo-one-regular">My Playlist</a></li>
+                <li><a href="/identify" class="russo-one-regular">Profile</a></li>
+                <li><a href="/logout" class="russo-one-regular">Logout</a></li>
+            </ul>
+            {% else %}
+            <div class="nav-info">
+            <form class="navbar-form-edit" method="POST" action="/login" style="display: flex; flex-wrap: nowrap; align-items: center;">
+                <div class="input-field" style="margin-right: 10px;">
+                    <input placeholder="username" value="bob" name="username" type="text" class="validate" required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-field" style="margin-right: 10px;">
+                    <input placeholder="password" value="bobpass" name="password" type="password" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+                <button type="submit" class="btn waves-effect waves-light black">Login</button>
+                <a href="/users" class="btn waves-effect waves-light black" style="margin-left: 10px; margin-right: 10px;">Sign Up</a>
+            </form>
+            </div>
+
+            
+            <div class="nav-burger">
+              <div class="navbar-form">
+                <form method="POST" action="/login">
+                    <div class="navbar-styling">
+                      <label for="username">Username</label>
+                        <input placeholder="username" value="bob" name="username" type="text" class="validate" required>
+                        
+                    </div>
+                    <div class="navbar-styling">
+                       <label for="password">Password</label>
+                        <input placeholder="password" value="bobpass" name="password" type="password" class="validate" required>
+                    </div>
+                    <div class="navbar-styling">
+                      <button type="submit" class="btn waves-effect waves-light black">Login</button>
+                            
+                      <a href="/users" class="btn waves-effect waves-light black">Sign Up</a>
+                    </div>
+                </form>
+              </div>
+              
+              <div class="size">
+                <a href="javascript:void(0);" class="icon fa-2x" onclick="hamburgerMenu()">
+                  <i class="fa fa-bars"></i>
+                </a>
+
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Flashed Messages Section -->
+    <div id="flashed-messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="collection">
+                    {% for message in messages %}
+                        <li class="collection-item"><strong>{{ message }}</strong></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="video-content" id="content">{% block content %}{% endblock %}</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-       M.AutoInit();
-
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-              {% for message in messages %}
-              M.toast({html: '{{message}}'})
-              {% endfor %}
-          {% endif %}
-        {% endwith %}
-       
+       document.addEventListener('DOMContentLoaded', function() {
+           // Function to fetch and display flashed messages
+           function getFlashedMessages() {
+               fetch('/get_flashed_messages')
+               .then(response => response.json())
+               .then(data => {
+                   const flashedMessagesDiv = document.getElementById('flashed-messages');
+                   flashedMessagesDiv.innerHTML = '';
+                   data.forEach(message => {
+                       const p = document.createElement('p');
+                       p.textContent = message;
+                       flashedMessagesDiv.appendChild(p);
+                       // Remove message after 5 seconds
+                       setTimeout(() => {
+                           p.remove();
+                       }, 5000);
+                   });
+               })
+               .catch(error => console.error('Error fetching flashed messages:', error));
+           }
+           
+           // Call the function to fetch and display flashed messages
+           getFlashedMessages();
+           
+           // Initialize Materialize components
+           M.AutoInit();
+       });
+    </script>
+    <script>
+      function hamburgerMenu() {
+        var x = document.getElementsByClassName("navbar-form")[0];
+        var y = document.getElementsByClassName("icon")[0];
+        if (x.style.display === "block") {
+          x.style.display = "none";
+          y.style.top = "-34px";
+        } else {
+          x.style.display = "block";
+          y.style.top = "0px";
+        }
+      }
     </script>
   </body>
 </html>
