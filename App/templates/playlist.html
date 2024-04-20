@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Playlist</title>
+    <!-- Add the embedded font links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Welcome to crimson -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&display=swap" rel="stylesheet">
+    <!-- where everydrop-->
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Russo+One&display=swap" rel="stylesheet">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    /* Define classes for consistent styling */
+    .center-content {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 20px;
+    }
+
+    .grid-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        flex-grow: 1;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-body {
+        padding: 15px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 0.9em;
+        color: #666;
+        flex-grow: 1;
+    }
+
+    .btn-primary {
+        background-color: red !important;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+</style>
+
+<body>
+    {% extends "layout.html" %}
+    {% block title %}Flask MVC App{% endblock %}
+    {% block page %}Flask MVC App{% endblock %}
+
+    {% block content %}
+    <div class="center-content">
+        <!-- Apply the .metal-mania-regular class to the heading -->
+        <h1 class="metal-mania-regular">{{ current_user.username }}'s Playlist</h1>
+        {% if is_authenticated %}
+            <p class="russo-one-regular">Enjoy your workout!</p>
+        {% endif %}
+    </div>
+
+    <div class="main-container">
+        <div class="grid-container">
+            <!-- YouTube videos go here -->
+            {% for video in videos %}
+            <div class="grid-item">
+                <div class="card">
+                    <div>
+                        <img src="{{ video.image }}">
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video.title }}</h5>
+                        <i class="small material-icons toggle-description" style="align-self: flex-start;">info_outline</i>
+                        <p class="card-text full-description">{{ video.description }}</p>
+                      
+                        <div class="btn-container">
+
+        
+                            <a href="{{ video.url }}" class="russo-one-regular btn btn-primary">
+                                <i class="material-icons">remove_red_eye</i> Watch Video
+                            </a>
+                          
+                            <form action="/delete" method="POST">
+                                <input type="hidden" name="id" value="{{ video.id }}">
+                                <button type="submit" class="russo-one-regular btn btn-primary"> <i class="material-icons">remove_circle</i> Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
