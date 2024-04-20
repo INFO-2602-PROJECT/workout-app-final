@@ -1,3 +1,552 @@
-html {
-    padding: 0;
+
+.russo-one-regular {
+  font-family: "Russo One", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: white; /* Add color property */
+}
+
+.russo-one-regular .p2 .p1{
+  font-family: "Russo One", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: #f70808; /* Add color property */
+}
+
+#flashed-messages {
+   color: black;
+   font-weight: bold;
+}
+
+.metal-mania-regular {
+  font-family: "Metal Mania", system-ui;
+  font-weight: 200;
+  font-style: normal;
+  letter-spacing: 1px;
+  color: white; /* Add color property */
+}
+
+.metal-mania-regular p {
+    font-size: 3.5rem; /* Adjust the size as needed */
+}
+
+.inconsolata-unique h6 {
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Adjust the weight as needed */
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.create-account-heading {
+  font-family: "Metal Mania", system-ui;
+  font-size: 3.0rem !important; 
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 1px;
+  color: black; /* Add color property */
+  text-align:center;
+}
+
+/* Override Materialize CSS for dropdown options */
+.input-field.col.s6 select.dropdown-content li>span,
+.input-field.col.s6 select.dropdown-content li>span {
+    color: red !important; /* Set text color to red */
+}
+
+
+/* Add this CSS to your existing stylesheet */
+
+body {
+  background-color: #131111 !important;; /* Set the background color to black */
+  color: #c7c7c7; /* Set the text color to white for better readability */
+  font-family: 'Didot', serif; /* Set the font-family */
+  font-colour: white;
+  background-image: url('https://giffiles.alphacoders.com/105/105226.gif') !important;;
+  background-size: cover; /* Ensures the background image covers the entire viewport */
+  background-blend-mode: overlay !important;;  /*Apply blending mode to blend the image with the background color */
+
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255, 0.3) !important; ; /* Semi-transparent black overlay */
+}
+
+
+
+.center-content {
+    text-align: center;
+    font-style: Didot;
+    font-family:serif;
+}
+
+
+.center-content h1{
+
+    font-size: 6.5rem;
+    line-height: 110%;
+    margin: 2.8rem 0 1.68rem 0;
+    font-weight: 400;
+    font-style: normal;
+    /* Add any other styles specific to the h1 element here */
+}
+
+.center-content p {
+    font-size: 20px;
+}
+
+.main-container {
+    max-height: 70vh; /* Adjust as needed */
+}
+
+
+.video-container{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.grid-item {
+    width: calc(20% - 20px); 
+    margin-bottom: 20px;
+
+}
+
+.slogan-styling{
+  font-family:'Graduate', sans-serif; 
+  text-align: center; 
+  color: red;
+}
+
+.heading-styling{
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+  text-decoration: underline; 
+  font-family: 'Noto Sans', sans-serif; 
+  font-weight: bold;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #1b1818;
+    border-radius: 5px;
+    color: black;
+}
+
+.card img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.card-body {
+    padding: 10px;
+
+}
+
+.card-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+    padding: 10px;
+    color:black;
+}
+
+.card-text {
+    margin-bottom: 10px;
+    color:black;
+}
+
+/*changed*/
+.card-buttons {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.card-buttons .btn.btn-primary {
+    width:auto;
+    background-color: red; /* Set the background color of the button to red */
+    color: white; /* Set the text color of the button to white */
+    border: none; /* Remove any border */
+    padding: 5px 5px; /* Adjust padding as needed */
+    white-space: nowrap; /* Prevent text wrapping */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center align items vertically */
+    justify-content: space-evenly; /* Center align items horizontally */
+}
+
+.card-icons {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-evenly;
+}
+
+.card-icons .btn{
+  width:40px;
+    background-color: red; /* Set the background color of the button to red */
+    color: white; /* Set the text color of the button to white */
+    border: none; /* Remove any border */
+    padding: 5px 5px; /* Adjust padding as needed */
+    white-space: nowrap; /* Prevent text wrapping */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center align items vertically */
+    justify-content: center;
+}
+
+@media (max-width: 555px) {
+  .card-buttons{
+    display: none;
+  }
+}
+
+@media (min-width: 555px) and (max-width: 650px) {
+    .card-icons .addition{
+    display: none;
+  }
+
+  .card-icons .eye{
+    display: none;
+  } 
+}
+
+@media (min-width: 650px) and (max-width: 910px) {
+  .card-buttons{
+    display: none;
+  }
+}
+
+@media (min-width: 910px) and (max-width: 992px) {
+    .card-icons .addition{
+    display: none;
+  }
+
+  .card-icons .eye{
+    display: none;
+  } 
+}
+
+@media (min-width: 992px) and (max-width: 1283px) {
+  .card-buttons{
+    display: none;
+  }
+}
+
+@media (min-width: 1283px){
+  .card-icons .addition{
+    display: none;
+  }
+
+  .card-icons .eye{
+    display: none;
+  } 
+}
+
+.card-buttons .btn.btn-primary:hover {
+    background-color: darkred; /* Darken the background color on hover */
+}
+
+.card-icons .btn:hover {
+    background-color: darkred; /* Darken the background color on hover */
+}
+/*End changed*/
+
+
+/* Profile HTML */
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+
+}
+
+.emp-profile{
+    padding: 5%;
+    margin-top: 50px;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    font-color: black;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #000a14b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #050505;
+}
+.profile-head h6{
+    color: #cc1400;
+    padding-block:10px;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #010b13;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #0e0201;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #0b0909;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #b31b00;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #ae0404;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #e00000;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #010a13;
+}
+
+.brand-logo {
+  height: 65px; /* Adjust the height as needed */
+  align-content: center;
+}
+
+.brand-logo img {
+  max-width: 200px; /* Adjust the maximum width as needed */
+  max-height: 100%; /* Adjust the maximum height as needed */
+  width: auto;
+  height: auto;
+}
+
+@media (min-width: 0px) and (max-width: 650px){
+  .logo-center{
+    display:none;
+  }
+  .logo-left{
+    position: fixed; 
+    top: 0; 
+    left: 0;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 2000px) {
+  .logo-left{
+    display: none;
+  }
+  .home-for-center{
+    position: fixed; 
+    top: 0; 
+    left: 0;
+  }
+  .logo-for-center{
+    position: fixed; 
+    top: 0; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+.nav-wrapper ul li a {
+  color: black; /* Set the color of the text to black */
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ulClass {
+  flex-grow: 2; 
+  justify-content: flex-start;
+}
+
+/*ENd change  */
+
+.full-description {
+    display: none;
+}
+
+.toggle-description:hover + .full-description {
+    display: block;
+}
+
+.search-bar {
+    text-align: center; /* Center align the search bar */
+    background-color: #000000cc; /* Set the background color */
+    padding: 10px 0; /* Add padding to the top and bottom */
+    margin-block: 5px;
+}
+
+.search-bar form {
+    display: inline-block; /* Display the form inline */
+    width: 100%; /* Make the form span the entire width of the container */
+    max-width: 700px; /* Set a maximum width for the form */
+}
+
+.search-bar input[type="text"] {
+    width: calc(100% - 110px); /* Calculate the width of the input field */
+    padding: 10px; /* Add padding to the input field */
+    border: 1px solid #8d0202; /* Add a border */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    color: #ffffff; /* Set the text color */
+}
+
+.search-bar button {
+    width: 100px; /* Set the width of the button */
+    padding: 10px; /* Add padding to the button */
+    background-color: red; /* Set the background color */
+    color: white; /* Set the text color */
+    border: none; /* Remove the border */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    
+}
+
+
+@media only screen and (max-width: 650px) {
+  .grid-item {
+  width: calc(100% - 20px); 
+  margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .grid-item {
+  width: calc(50% - 20px); 
+  margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .grid-item {
+  width: calc(33% - 20px); 
+  margin-bottom: 20px;
+  }
+}
+
+
+.nav-burger {
+  position: relative;
+}
+
+.navbar-form {
+   display: none; 
+}
+
+.navbar-styling {
+  background-color:white;
+  color: white;
+  padding: 14px 16px;
+  font-size: 17px;
+  display: block;
+}
+
+.nav-burger a.icon {
+  background: white;
+  color: black;
+  display: inline;
+  position: absolute;
+  right: 25px;
+  top: -30px;
+  height: 20px;
+}
+
+.nav-burger a:hover {
+  color: red;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .nav-burger a.icon {
+    top: px;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 1300px){
+  .nav-info{
+    display:none;
+  }
+}
+
+@media (min-width: 1301px) and (max-width: 2000px) {
+  .nav-burger{
+    display: none;
+  }
 }
