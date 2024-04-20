@@ -17,6 +17,7 @@ from App.controllers import (
 
 from App.views import views
 
+
 class Video:
     def __init__(self, title, image_url, video_url, description, video_id):
         self.title = title
