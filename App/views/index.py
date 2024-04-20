@@ -13,6 +13,7 @@ import os
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
+
 class Videos:
     def __init__(self, title, image_url, video_url, description, video_id):
         self.title = title
