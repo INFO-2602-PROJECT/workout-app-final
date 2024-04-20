@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, jsonify, request, flash, send_from_directory, flash, redirect, url_for
 from flask_jwt_extended import jwt_required, current_user, unset_jwt_cookies, set_access_cookies
 
-
 from.index import index_views
 
 from App.controllers import (
@@ -9,8 +8,6 @@ from App.controllers import (
 )
 
 auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
-
-
 
 
 '''
@@ -21,10 +18,11 @@ def get_user_page():
     users = get_all_users()
     return render_template('users.html', users=users)
 
-@auth_views.route('/identify', methods=['GET'])
+@auth_views.route('/identify', methods=['GET', 'POST'])
 @jwt_required()
 def identify_page():
-    return render_template('message.html', title="Identify", message=f"You are logged in as {current_user.id} - {current_user.username}")
+    user = current_user
+    return render_template('message.html', title="Identify", message=f"You are logged in as {current_user.id} - {current_user.username}", user=current_user)
     
 
 @auth_views.route('/login', methods=['POST'])
