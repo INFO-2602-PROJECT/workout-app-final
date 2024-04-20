@@ -7,6 +7,7 @@ from App.controllers import (
     login
 )
 
+
 auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
 
 
