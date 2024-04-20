@@ -1,15 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> User Playlist</title>
+    <!-- Add the embedded font links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Welcome to crimson -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&display=swap" rel="stylesheet">
+
+  <!-- where everydrop-->
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Russo+One&display=swap" rel="stylesheet">
+
+  <!-- gym emx-->
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Metal+Mania&family=Russo+One&display=swap" rel="stylesheet">
+
+  <style>
+      /* Override Materialize CSS for dropdown options */
+      .dropdown-content li>span {
+          color: red !important;
+      }
+  </style>
+
+</head>
+
 {% extends "layout.html" %}
-{% block title %}{{title}}{% endblock %}
-{% block page %}{{title}}{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block page %}{{ title }}{% endblock %}
 
 {{ super() }}
 
 {% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <div class="container">
-    <div class="row" style="margin-top: 10%;">
-        <div class="col s12 m10 offset-m1">
-            <p>{{message}}</p>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="card">
+                <form method="post" action="/profileupdate">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="profile-img">
+                                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/92f6f5d7-01b0-4b19-9724-cae4c7bab289/dh9hvs8-562d989d-84a0-4fb4-95c1-7389ee55c590.jpg/v1/fill/w_260,h_280,q_75,strp/gym_icon_fitness_vector_graphics_260nw_1365506174_by_ethella106_dh9hvs8-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjgwIiwicGF0aCI6IlwvZlwvOTJmNmY1ZDctMDFiMC00YjE5LTk3MjQtY2FlNGM3YmFiMjg5XC9kaDlodnM4LTU2MmQ5ODlkLTg0YTAtNGZiNC05NWMxLTczODllZTU1YzU5MC5qcGciLCJ3aWR0aCI6Ijw9MjYwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.aAhovWoDNzzbLZgcyBaLD7m3LlyRWVK1UCBpGb6hMC4" alt=""/>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="profile-head">
+                                    <h5 class="metal-mania-regular">
+                                        <p>{{ user.first_name }} {{ user.last_name }}</p>
+                                    </h5>
+                                    <h6 class="inconsolata-unique">
+                                        Gym Experience: {{ user.gym_experience }}
+                                    </h6>
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class=" russo-one-regular nav-link active" style="color: black;" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+                                <div class="tab-content profile-tab" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="russo-one-regular"style="color: black;">Username</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="username" value="{{ user.username }}">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="russo-one-regular"style="color: black;">New Password</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="password" value="">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="russo-one-regular" style="color: black;">First Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="first_name" value="{{ user.first_name }}">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="russo-one-regular" style="color: black;">Last Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="last_name" value="{{ user.last_name }}">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                               <label class="russo-one-regular"style="color: black;">Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="email" name="email" value="{{ user.email }}">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="russo-one-regular"style="color: black;"> Height (cm)</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="height" value="{{ user.height }}">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="russo-one-regular" style="color: black;">Weight (lb)</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="weight" value="{{ user.weight }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <select name="gym_experience" required>
+                                                    <option value="" disabled selected>Choose your gym experience</option>
+                                                    <option value="Newbie">Newbie</option>
+                                                    <option value="Seasoned">Seasoned</option>
+                                                    <option value="Trainer">Trainer</option>
+                                                </select>
+                                                <label class="russo-one-regular" style="color: black;" >Gym Experience</label>
+                                            </div>
+                                        </div>
+
+                                      <div class="row">
+                                          <div class="col-md-12 text-center">
+                                              <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Update"/>
+                                          </div>
+                                      </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>           
+            </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
